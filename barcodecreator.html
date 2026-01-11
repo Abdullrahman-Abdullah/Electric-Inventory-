@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أبو الياس للكهرباء - مولد الباركود</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <style>
+        /* =================================== */
+        /* التنسيقات العامة والمتغيرات */
+        /* =================================== */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --info-color: #17a2b8;
+            --light-bg: #f8f9fa;
+            --light-text: #2c3e50;
+            --light-card: #ffffff;
+            --light-border: #e0e0e0;
+            --dark-bg: #1a1a2e;
+            --dark-text: #e6e6e6;
+            --dark-card: #16213e;
+            --dark-border: #2d4059;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            transition: var(--transition);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--light-border);
+        }
+
+        body.dark-mode header {
+            border-bottom-color: var(--dark-border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            
+        }
+
+        .logo h1 {
+            font-size: 26px;
+            color: var(--primary-color);
+            font-weight: 700;
+           
+        }
+        .co-name{
+             position:relative;
+             border-bottom: 1px solid var(--primary-color);
+        }
+        span{
+            font-size:.8rem;
+            position:absolute;
+            bottom:-35%;
+            right:3%;
+            background-color:var(--light-card);
+            
+        }
+        body.dark-mode span{
+            background-color:var(--dark-card);
+        }
+        .logo-icon {
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+        
+        /* =================================== */
+        /* تنسيقات التحكم */
+        /* =================================== */
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: var(--light-card);
+            border: 1px solid var(--light-border);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--light-text);
+        }
+        
+        body.dark-mode .theme-toggle {
+            background: var(--dark-card);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+        
+        /* =================================== */
+        /* تنسيقات محتوى التطبيق */
+        /* =================================== */
+        .app-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .barcode-generator {
+            background-color: var(--light-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            border: 1px solid var(--light-border);
+        }
+        
+        body.dark-mode .barcode-generator {
+            background-color: var(--dark-card);
+            border-color: var(--dark-border);
+        }
+
+        .barcode-generator h2 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .barcode-generator h2 i {
+            font-size: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-border);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: var(--light-bg);
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .input-group input {
+            background-color: var(--dark-bg);
+            border-color: var(--dark-border);
+            color: var(--dark-text);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            margin-top: 10px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .barcode-display {
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            border: 1px solid var(--light-border);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        body.dark-mode .barcode-display {
+            background-color: var(--dark-bg);
+            border-color: var(--dark-border);
+        }
+
+        #barcodeCanvas {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .barcode-text {
+            margin-top: 15px;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--light-text);
+        }
+        
+        body.dark-mode .barcode-text {
+            color: var(--dark-text);
+        }
+
+        .barcode-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .print-btn {
+            background-color: var(--info-color);
+            color: white;
+        }
+
+        .download-btn {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #777;
+            padding: 40px 20px;
+        }
+
+        .empty-state i {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: #bdc3c7;
+        }
+
+        /* =================================== */
+        /* تنسيقات الـ Toast Notifications */
+        /* =================================== */
+        #toastContainer {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background-color: var(--success-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(-20px);
+            min-width: 300px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast.error {
+            background-color: var(--danger-color);
+        }
+        
+        .toast.warning {
+            background-color: var(--warning-color);
+        }
+
+        /* =================================== */
+        /* تنسيقات Footer */
+        /* =================================== */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid var(--light-border);
+            color: #777;
+            font-size: 14px;
+        }
+        
+        body.dark-mode footer {
+            border-top-color: var(--dark-border);
+        }
+
+        /* =================================== */
+        /* الـ Media Queries */
+        /* =================================== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .barcode-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="toastContainer"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+               <button class="theme-toggle" id="themeToggle" title="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                </button>
+              <!-- <h1>أبو الياس للكهرباء - مولد الباركود</h1>-->
+            </div>
+            <div class="header-controls">
+               
+            </div>
+        </header>
+
+        <div class="app-content">
+            <div class="barcode-generator">
+                <h2 class="co-name"><i class="fas fa-barcode"></i>  QR-Code 39 <span>From Reson</span></h2>
+                
+                <div class="input-group">
+                    <!--  <label for="barcodeText">النص المراد تحويله إلى باركود</label>-->
+                    <input type="text" id="barcodeText" placeholder="أدخل النص المراد تحويله إلى باركود">
+                </div>
+                
+                <button class="generate-btn" id="generateBtn">
+                    <i class="fas fa-cog"></i>
+                    توليد الباركود
+                </button>
+                
+                <div class="barcode-display" id="barcodeDisplay">
+                    <div class="empty-state">
+                        <i class="fas fa-barcode"></i>
+                        <h3>لم يتم توليد باركود بعد</h3>
+                        <p>أدخل النص أعلاه وانقر على "توليد الباركود"</p>
+                    </div>
+                </div>
+                
+                <div class="barcode-actions" id="barcodeActions" style="display: none;">
+                    <button class="action-btn print-btn" id="printBtn">
+                        <i class="fas fa-print"></i>
+                        طباعة الباركود
+                    </button>
+                    <button class="action-btn download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        تحميل الباركود
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+          <!--  <p>© 2023 أبو الياس للكهرباء - جميع الحقوق محفوظة</p> -->
+        </footer>
+    </div>
+
+    <script>
+        // ===================================
+        // البيانات والمتغيرات الأساسية
+        // ===================================
+        let darkMode = localStorage.getItem('darkMode') === 'true';
+
+        // ===================================
+        // عناصر DOM
+        // ===================================
+        const themeToggle = document.getElementById('themeToggle');
+        const barcodeText = document.getElementById('barcodeText');
+        const generateBtn = document.getElementById('generateBtn');
+        const barcodeDisplay = document.getElementById('barcodeDisplay');
+        const barcodeActions = document.getElementById('barcodeActions');
+        const printBtn = document.getElementById('printBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const toastContainer = document.getElementById('toastContainer');
+
+        // ===================================
+        // وظائف الواجهة والـ UX
+        // ===================================
+        
+        function showToast(message, type = 'success', duration = 3000) {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+            
+            if (type === 'success') {
+                toast.querySelector('i').className = 'fas fa-check-circle';
+            } else if (type === 'error') {
+                 toast.querySelector('i').className = 'fas fa-times-circle';
+            } else if (type === 'warning') {
+                 toast.querySelector('i').className = 'fas fa-exclamation-triangle';
+            }
+
+            toastContainer.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+
+            // Hide and remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, duration);
+        }
+
+        function updateTheme() {
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        }
+        
+        function toggleTheme() {
+            darkMode = !darkMode;
+            localStorage.setItem('darkMode', darkMode);
+            updateTheme();
+        }
+
+        // ===================================
+        // وظائف توليد الباركود
+        // ===================================
+        
+        function generateBarcode() {
+            const text = barcodeText.value.trim();
+            
+            if (!text) {
+                showToast('يرجى إدخال نص لتوليد الباركود', 'error');
+                return;
+            }
+            
+            // تنظيف منطقة العرض
+            barcodeDisplay.innerHTML = '';
+            
+            // إنشاء عنصر canvas للباركود
+            const canvas = document.createElement('canvas');
+            canvas.id = 'barcodeCanvas';
+            barcodeDisplay.appendChild(canvas);
+            
+            try {
+                // توليد الباركود باستخدام مكتبة JsBarcode
+                JsBarcode(canvas, text, {
+                    format: "CODE39",
+                    lineColor: darkMode ? "#000000" : "#000000",
+                    width: 10,
+                    height: 500,
+                    displayValue: true,
+                    fontOptions: "bold",
+                    text: text,
+                    textMargin: 10,
+                    fontSize: 0,
+                    background: darkMode ? "#ffffff" : "#ffffff"
+                });
+                
+                // إضافة نص أسفل الباركود
+                const barcodeTextElement = document.createElement('div');
+                barcodeTextElement.className = 'barcode-text';
+                barcodeTextElement.textContent = text;
+                barcodeDisplay.appendChild(barcodeTextElement);
+                
+                // إظهار أزرار الإجراءات
+                barcodeActions.style.display = 'flex';
+                
+                showToast('تم توليد الباركود بنجاح');
+            } catch (error) {
+                console.error('خطأ في توليد الباركود:', error);
+                showToast('حدث خطأ أثناء توليد الباركود', 'error');
+                
+                // إخفاء أزرار الإجراءات في حالة الخطأ
+                barcodeActions.style.display = 'none';
+            }
+        }
+
+        function printBarcode() {
+            const canvas = document.getElementById('barcodeCanvas');
+            if (!canvas) {
+                showToast('لا يوجد باركود للطباعة', 'error');
+                return;
+            }
+            
+            // إنشاء نافذة طباعة
+            const printWindow = window.open('', '_blank');
+            const printContent = `
+                <!DOCTYPE html>
+                <html dir="rtl">
+                <head>
+                    <title>طباعة الباركود</title>
+                    <style>
+                        body { 
+                            font-family: Arial, sans-serif; 
+                            margin: 20px; 
+                            direction: rtl; 
+                            text-align: center;
+                        }
+                        .barcode-container {
+                            margin: 20px auto;
+                            max-width: 100%;
+                        }
+                        .barcode-text {
+                            margin-top: 15px;
+                            font-weight: bold;
+                            font-size: 18px;
+                        }
+                        @media print {
+                            body { margin: 0; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="barcode-container">
+                        <img src="${canvas.toDataURL()}" alt="باركود">
+                       
+                    </div>
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                            setTimeout(function() {
+                                window.close();
+                            }, 500);
+                        };
+                    <\/script>
+                </body>
+                </html>
+            `;
+            
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+        }
+       //  <div class="barcode-text">${barcodeText.value}</div> 
+        function downloadBarcode() {
+            const canvas = document.getElementById('barcodeCanvas');
+            if (!canvas) {
+                showToast('لا يوجد باركود للتحميل', 'error');
+                return;
+            }
+            
+            // إنشاء رابط للتحميل
+            const link = document.createElement('a');
+            link.download = `باركود_${barcodeText.value}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            showToast('تم تحميل الباركود بنجاح');
+        }
+
+        // ===================================
+        // وظائف التهيئة والمستمعين
+        // ===================================
+
+        function initApp() {
+            updateTheme();
+            
+            // إضافة المستمعين للأحداث
+            themeToggle.addEventListener('click', toggleTheme);
+            generateBtn.addEventListener('click', generateBarcode);
+            printBtn.addEventListener('click', printBarcode);
+            downloadBtn.addEventListener('click', downloadBarcode);
+            
+            // السماح بإنشاء الباركود بالضغط على Enter
+            barcodeText.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    generateBarcode();
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
