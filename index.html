@@ -2636,7 +2636,7 @@
             return list.filter(product => {
                 const profit = product.salePrice - product.purchasePrice;
                 // شرط التنبيه: مخزون قليل جداً (<= reorderPoint) أو ربح قليل (< 2)
-                return product.quantity <= product.reorderPoint || profit < LOW_PROFIT_THRESHOLD;
+                return product.quantity <= product.reorderPoint
             });
         }
         
