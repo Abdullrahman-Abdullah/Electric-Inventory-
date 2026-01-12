@@ -1,0 +1,154 @@
+/* إعدادات عامة */
+:root {
+    --primary: #4ecca3;
+    --secondary: #0f3460;
+    --dark: #1a1a2e;
+    --text: #ffffff;
+    --danger: #e94560;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* للهواتف */
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: row; /* افتراضي للكمبيوتر */
+    height: 100vh;
+    width: 100vw;
+}
+
+/* لوحة التحكم */
+#sidebar {
+    width: 320px;
+    background: #16213e;
+    padding: 20px;
+    border-left: 2px solid var(--secondary);
+    z-index: 10;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+/* حاوية الـ 3D */
+#canvas-container {
+    flex: 1;
+    position: relative;
+    cursor: move;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* العناصر المدخلة */
+h2, h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    opacity: 0.8;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    background: var(--secondary);
+    border: 1px solid #4ecca344;
+    color: white;
+    border-radius: 6px;
+    font-size: 16px; /* مهم لمنع الزووم التلقائي في آيفون */
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary);
+}
+
+.btn {
+    background: var(--primary);
+    color: var(--dark);
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: transform 0.1s, background 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.info-box {
+    background: rgba(78, 204, 163, 0.1);
+    border-right: 3px solid var(--primary);
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+/* === تنسيقات الشاشات الصغيرة (الهواتف) === */
+@media (max-width: 768px) {
+    #app {
+        flex-direction: column-reverse; /* اجعل التحكم في الأسفل والـ 3D في الأعلى */
+    }
+
+    #sidebar {
+        width: 100%;
+        height: 40vh; /* تأخذ 40% من الشاشة */
+        border-left: none;
+        border-top: 2px solid var(--primary);
+        padding: 15px;
+    }
+
+    #canvas-container {
+        height: 60vh; /* الـ 3D يأخذ الجزء العلوي */
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 15px; /* أزرار أكبر لتسهيل اللمس */
+    }
+}
+
+/* تنسيق خاص للأجهزة الصغيرة جداً */
+@media (max-width: 480px) {
+    #sidebar {
+        height: 50vh;
+    }
+    #canvas-container {
+        height: 50vh;
+    }
+}

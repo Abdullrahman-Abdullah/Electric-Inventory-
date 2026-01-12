@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ابو إلياس للكهرباء - مكان المنتج</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --bg: #1a1a2e;
+            --panel: rgba(26, 26, 46, 0.95);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* منطقة العرض 3D */
+        #mapContainer {
+            flex: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        canvas { width: 100%; height: 100%; display: block; }
+
+        /* لوحة التحكم السفلية (للهاتف) */
+        #mobilePanel {
+            height: 40vh;
+            background: var(--panel);
+            border-top: 2px solid var(--primary);
+            border-radius: 20px 20px 0 0;
+            padding: 15px;
+            overflow-y: auto;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .search-box {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 16px; /* لمنع الزوم التلقائي في الآيفون */
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(0,255,136,0.1);
+        }
+
+        .product-card:active {
+            background: rgba(0,255,136,0.2);
+        }
+
+        .btn-go {
+            background: var(--primary);
+            color: #1a1a2e;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* أزرار التحكم الطافية على الخريطة */
+        .floating-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .f-btn {
+            width: 45px;
+            height: 45px;
+            background: var(--panel);
+            border: 1px solid var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        #loading {
+            position: absolute;
+            inset: 0;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0,255,136,0.1);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="loading">
+        <div class="spinner"></div>
+        <p style="margin-top:15px">جاري تجهيز المستودع...</p>
+    </div>
+
+    <div id="mapContainer">
+        <canvas id="warehouse3D"></canvas>
+        
+        <div class="floating-controls">
+            <button class="f-btn" onclick="resetView()"><i class="fas fa-sync"></i></button>
+            <button class="f-btn" onclick="zoomIn()"><i class="fas fa-search-plus"></i></button>
+        </div>
+    </div>
+
+    <div id="mobilePanel">
+        <div class="search-box">
+            <input type="text" placeholder="ابحث عن منتج أو رف..." id="searchInput" oninput="filterProducts()">
+            <button class="btn-go"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div id="inventoryList">
+            </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

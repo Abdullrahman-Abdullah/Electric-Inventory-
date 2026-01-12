@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستودع ذكي - تحكم كامل</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar">
+            <h2><i class="fas fa-box"></i> إدارة الرفوف</h2>
+            
+            <div class="input-group">
+                <label>مساحة المستودع (متر):</label>
+                <div style="display:flex; gap:5px;">
+                   <input type="number" id="w_width" value="10" placeholder="العرض">
+                   <input type="number" id="w_depth" value="10" placeholder="العمق">
+                </div>
+                <button class="btn" onclick="updateFloor()">ضبط الأرضية</button>
+            </div>
+
+            <div class="input-group">
+                <label>إضافة رف جديد (صورة):</label>
+                <input type="file" id="wallImage" accept="image/*" onchange="uploadWallImage(event)">
+            </div>
+            <div class="input-group" style="border: 1px solid #ff9f43; background: rgba(255,159,67,0.1);">
+    <label><i class="fas fa-vr-cardboard"></i> رفع صورة بانوراما 360:</label>
+    <input type="file" id="panoImage" accept="image/*" onchange="uploadPanorama(event)">
+    <div class="info-box" style="color: #ff9f43;">ملاحظة: هذه الميزة ستجعلك تشعر وكأنك داخل المستودع.</div>
+</div>
+<div class="input-group">
+    <label><i class="fas fa-images"></i> صور المستودع (بانوراما):</label>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+        <button class="btn" onclick="document.getElementById('pano1').click()">صورة 1</button>
+        <button class="btn" onclick="document.getElementById('pano2').click()">صورة 2</button>
+    </div>
+    <input type="file" id="pano1" hidden accept="image/*" onchange="loadPano(event, 1)">
+    <input type="file" id="pano2" hidden accept="image/*" onchange="loadPano(event, 2)">
+</div>
+
+<div id="pano-switcher" style="display:none; margin-top: 10px;">
+    <p>التنقل بين النقاط:</p>
+    <div style="display: flex; gap: 10px;">
+        <button class="btn-nav" onclick="switchView(1)">الذهاب للنقطة 1</button>
+        <button class="btn-nav" onclick="switchView(2)">الذهاب للنقطة 2</button>
+    </div>
+</div>
+<div class="toolbar-section">
+    <h3><i class="fas fa-file-export"></i> العمليات</h3>
+    <button class="btn" onclick="exportDesign()">
+        <i class="fas fa-download"></i> تصدير المخطط (JSON)
+    </button>
+</div>
+
+
+            <div id="controls-ui" style="display:none;">
+                <hr>
+                <h3 id="selectedName">الرف المختار: لا يوجد</h3>
+                <div class="control-pad">
+                    <button class="btn-nav" onclick="moveSelected(0, -0.5)">🔼</button>
+                    <div style="display:flex; justify-content:center; gap:10px;">
+                        <button class="btn-nav" onclick="moveSelected(-0.5, 0)">◀️</button>
+                        <button class="btn-nav" onclick="rotateSelected()">🔄</button>
+                        <button class="btn-nav" onclick="moveSelected(0.5, 0)">▶️</button>
+                    </div>
+                    <button class="btn-nav" onclick="moveSelected(0, 0.5)">🔽</button>
+                </div>
+                <button class="btn btn-danger" onclick="deleteSelected()" style="margin-top:10px; background:#e94560;">حذف الرف</button>
+            </div>
+        </div>
+        
+        <div id="canvas-container">
+            <canvas id="warehouseCanvas"></canvas>
+            <div id="hint">اضغط على أي رف لتحريكه</div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+{
+  "projectName": "مخطط المستودع بالصور",
+  "elements": [
+    {
+      "id": "2215857A-B2E5-4E74-A6F7-D09DBDA10137",
+      "name": "عنصر مستودع",
+      "type": "",
+      "position": {
+        "x": 0,
+        "y": 0.6,
+        "z": 0
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+      "scale": {
+        "x": 3,
+        "y": 0.1,
+        "z": 5
+      },
+      "hasTexture": false
+    },
+    {
+      "id": "AC69224B-A97A-4E5D-8D16-D9102197F2DC",
+      "name": "عنصر مستودع",
+      "type": "image_rack",
+      "position": {
+        "x": -2.5,
+        "y": 1,
+        "z": 0.5
+      },
+      "rotation": {
+        "y": 0
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 1,
+        "z": 2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "0C7F973C-05EE-46D3-9DE0-72E0ABC1FBE5",
+      "name": "عنصر مستودع",
+      "type": "image_rack",
+      "position": {
+        "x": -1.5,
+        "y": 1,
+        "z": -1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 1,
+        "z": 2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "6B2FF061-5B73-4E6D-AB5A-1E19BF96A92B",
+      "name": "عنصر مستودع",
+      "type": "image_rack",
+      "position": {
+        "x": 0.5,
+        "y": 1,
+        "z": -1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 1,
+        "z": 2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "281B13A2-12D7-49BE-8058-637C322C1ADB",
+      "name": "عنصر مستودع",
+      "type": "image_rack",
+      "position": {
+        "x": -1.5,
+        "y": 1,
+        "z": 1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 1,
+        "z": 2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "EBACCD96-24A9-4703-B5D8-E3AE2DF2E0BA",
+      "name": "عنصر مستودع",
+      "type": "image_rack",
+      "position": {
+        "x": 0.5,
+        "y": 1,
+        "z": 1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 1,
+        "z": 2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "A-1",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 1,
+        "z": 1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+      "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "A-2",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 0.8,
+        "z": 1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "A-3",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 1.2,
+        "z": 1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    }, {
+      "id": "A-4",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 1.4,
+        "z": 1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "B-1",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": -1.5,
+        "y": 1,
+        "z": 1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "B-2",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": -1.5,
+        "y": 1.2,
+        "z": 1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "B-3",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": -1.5,
+        "y": 1.4,
+        "z": 1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "B-4",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": -1.5,
+        "y": 0.8,
+        "z": 1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "C-1",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 1,
+        "z": -1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "C-2",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 1.2,
+        "z": -1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "C-3",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 1.4,
+        "z": -1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "C-4",
+      "name": "عنصر مستودع",
+      "position": {
+        "x": 0.5,
+        "y": 0.8,
+        "z": -1.4699
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "D-1",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -1.5,
+        "y": 0.8,
+        "z": -1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "D-2",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -1.5,
+        "y": 1,
+        "z": -1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "D-3",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -1.5,
+        "y": 1.2,
+        "z": -1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "D-4",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -1.5,
+        "y": 1.4,
+        "z": -1.5
+      },
+      "rotation": {
+        "y": 1.55555555
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "E-1",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -2.5,
+        "y": 0.8,
+        "z": 0.5
+      },
+      "rotation": {
+        "y": 0
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "E-2",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -2.5,
+        "y": 1,
+        "z": 0.5
+      },
+      "rotation": {
+        "y": 0
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "E-3",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -2.5,
+        "y": 1.2,
+        "z": 0.5
+      },
+      "rotation": {
+        "y": 0
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    },
+    {
+      "id": "E-4",
+      "name": "عنصر مستودع",
+       "position": {
+        "x": -2.5,
+        "y": 1.4,
+        "z": 0.5
+      },
+      "rotation": {
+        "y": 0
+      },
+     "scale": {
+        "x": 0.1,
+        "y": 0.007,
+        "z": 1.2
+      },
+      "hasTexture": true
+    }
+    ],
+    
+  "totalItems": 7
+}
