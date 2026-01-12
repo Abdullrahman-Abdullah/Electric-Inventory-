@@ -118,7 +118,7 @@ function renderProductList() {
     });
 }
 
-let psid = localstorage.getItem("psid");
+let psid = localStorage.getItem("psid");
 setTimeout(() => {
   navigateToProduct(psid);
 }, 3000);
