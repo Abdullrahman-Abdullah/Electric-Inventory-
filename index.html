@@ -3321,7 +3321,13 @@
             document.getElementById('deleteDataBtn').addEventListener('click', deleteAllData);
         }
 
-        document.addEventListener('DOMContentLoaded', initApp);
+        document.addEventListener('DOMContentLoaded', initApk);
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js');
+  });
+}
+
     </script>
 </body>
 </html>
